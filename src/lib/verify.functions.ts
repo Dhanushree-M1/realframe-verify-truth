@@ -46,7 +46,7 @@ function domainOf(u: string) {
 export const verifyClaim = createServerFn({ method: "POST" })
   .inputValidator((d) => Input.parse(d))
   .handler(async ({ data }): Promise<VerifyResult> => {
-    const key = process.env.SERPAPI_KEY;
+    const key = process.env['SERPAPI_KEY'];
     if (data.demo || !key) return demoResult(data.claim);
 
     const f = extractFacts(data.claim);
@@ -73,7 +73,7 @@ export const verifyClaim = createServerFn({ method: "POST" })
             date: it.date ?? null,
             snippet: it.snippet ?? it.stories?.[0]?.title ?? "",
             relevance: i === 0 ? "high" : "medium",
-            kind: queries[i].kind,
+            kind: queries[i]?.kind ?? "web",
           });
         }
       });
