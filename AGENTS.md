@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Verification runs in a server function (src/lib/verify.functions.ts) reading SERPAPI_KEY; it returns demo data when the key is missing so the UI always works.
